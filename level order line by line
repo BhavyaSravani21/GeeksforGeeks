@@ -1,0 +1,26 @@
+'''
+class Node:
+    def _init_(self,val):
+        self.data = val
+        self.left = None
+        self.right = None
+'''
+class Solution:
+    def levelOrder(self,root):
+        # code here
+        if (root==None):
+            return []
+        q=deque([(root)])
+        ans=[]
+        while (len(q)>0):
+            level=[]
+            for i in range(len(q)):
+                node=q.popleft()
+                if (node.left):
+                    q.append(node.left)
+                if (node.right):
+                    q.append(node.right)
+                level.append(node.data)
+            ans.append(level)
+        return ans       
+        
