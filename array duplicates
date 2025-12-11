@@ -1,0 +1,12 @@
+class Solution:
+    def findDuplicates(self, arr):
+        res = []
+        for num in arr:
+            idx = abs(num) - 1
+            
+            if arr[idx] < 0:     # already visited
+                res.append(abs(num))
+            else:
+                arr[idx] = -arr[idx]  # mark visited
+        
+        return res
