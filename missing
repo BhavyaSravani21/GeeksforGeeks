@@ -1,0 +1,20 @@
+class Solution:
+    def findTwoElement(self, arr):
+        n = len(arr)
+
+        # Expected sums
+        S = n * (n + 1) // 2
+        P = n * (n + 1) * (2 * n + 1) // 6
+
+        # Actual sums
+        S1 = sum(arr)
+        P1 = sum(x * x for x in arr)
+
+        # Let x = repeating, y = missing
+        diff = S1 - S          # x - y
+        diff2 = (P1 - P) // diff   # (x^2 - y^2) / (x - y) = x + y
+
+        x = (diff + diff2) // 2
+        y = x - diff
+
+        return [x, y]
